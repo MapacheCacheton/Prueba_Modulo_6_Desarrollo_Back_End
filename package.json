@@ -4,7 +4,8 @@
   "description": "Desarrollo Prueba Roommates",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./assets/js/index.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/MapacheCacheton/Prueba_Modulo_6_Desarrollo_Back_End/issues"
   },
-  "homepage": "https://github.com/MapacheCacheton/Prueba_Modulo_6_Desarrollo_Back_End#readme"
+  "homepage": "https://github.com/MapacheCacheton/Prueba_Modulo_6_Desarrollo_Back_End#readme",
+  "dependencies": {
+    "axios": "^0.26.0",
+    "nodemon": "^2.0.15"
+  }
 }
