@@ -1,0 +1,19 @@
+{
+  "name": "prueba---roommates",
+  "version": "1.0.0",
+  "description": "Desarrollo Prueba Roommates",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/MapacheCacheton/Prueba_Modulo_6_Desarrollo_Back_End.git"
+  },
+  "author": "Byron Carvajal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MapacheCacheton/Prueba_Modulo_6_Desarrollo_Back_End/issues"
+  },
+  "homepage": "https://github.com/MapacheCacheton/Prueba_Modulo_6_Desarrollo_Back_End#readme"
+}
