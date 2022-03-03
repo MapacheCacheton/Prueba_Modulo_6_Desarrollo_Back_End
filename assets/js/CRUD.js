@@ -1,14 +1,23 @@
 const fs = require('fs')
 
-function writeRoommates(data, res){
-    fs.writeFile('./assets/DB/roommates.json', JSON.stringify(data, null, ' '), ()=>{
-        res.end()
-    })
+function writeRoommates(data){
+    fs.writeFileSync('./assets/DB/roommates.json', JSON.stringify(data, null, ' '))
 }
 
 function readRoommates(){
-    const data = fs.readFileSync('./assets/DB/roommates.json')
-    return JSON.parse(data)
+    const {roommates} = JSON.parse(fs.readFileSync('./assets/DB/roommates.json'))
+    return roommates
 }
 
-module.exports = {writeRoommates, readRoommates}
+function writeGastos(data){
+    fs.writeFileSync('./assets/DB/gastos.json', JSON.stringify(data, null, ' '))
+}
+
+function readGastos(){
+    const {gastos} = JSON.parse(fs.readFileSync('./assets/DB/gastos.json'))
+    return gastos
+}
+
+
+
+module.exports = {writeRoommates, readRoommates, writeGastos, readGastos}

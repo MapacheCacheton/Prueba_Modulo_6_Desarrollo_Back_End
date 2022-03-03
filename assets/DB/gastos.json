@@ -1,0 +1,14 @@
+{
+ "gastos": [
+  {
+   "roommate": "Susanna Hamilton",
+   "descripcion": "Articulos de limpieza",
+   "monto": 15000
+  },
+  {
+   "roommate": "Abdeljalil Leenstra",
+   "descripcion": "Articulos de limpieza",
+   "monto": 15000
+  }
+ ]
+}
