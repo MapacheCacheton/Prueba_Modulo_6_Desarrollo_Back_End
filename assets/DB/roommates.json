@@ -1,12 +1,22 @@
 {
  "roommates": [
   {
-   "nombre": "Abdeljalil Leenstra",
-   "email": "abdeljalil.leenstra@example.com"
+   "nombre": "Andy Olson",
+   "email": "andy.olson@example.com",
+   "debe": 0,
+   "recibe": 3333
   },
   {
-   "nombre": "Susanna Hamilton",
-   "email": "susanna.hamilton@example.com"
+   "nombre": "Väinö Hakala",
+   "email": "vaino.hakala@example.com",
+   "debe": 1667,
+   "recibe": 0
+  },
+  {
+   "nombre": "Luisa Ramos",
+   "email": "luisa.ramos@example.com",
+   "debe": 1667,
+   "recibe": 0
   }
  ]
 }
