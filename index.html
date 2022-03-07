@@ -150,11 +150,13 @@ Articulos de limpieza</textarea
       const getRoommates = async () => {
         const res = await fetch("http://localhost:3000/roommate");
         const data = await res.json();
+        console.log('Get roommates status: ' + res.status);
         roommates = data.roommates;
       };
       const getGastos = async () => {
         const res = await fetch("http://localhost:3000/gasto", { method: "GET" });
         const data = await res.json();
+        console.log('Get gastos status: ' + res.status);
         gastos = data.gastos;
       };
 
@@ -201,7 +203,10 @@ Articulos de limpieza</textarea
 
       const nuevoRoommate = () => {
         fetch("http://localhost:3000/roommate", { method: "POST" })
-          .then((res) => res.json())
+          .then((res) => {
+            console.log('POST roommates status: ' + res.status);
+            res.json()
+          })
           .then(() => {
             imprimir();
           });
@@ -218,14 +223,14 @@ Articulos de limpieza</textarea
             descripcion,
             monto,
           }),
-        });
+        }).then(res=> console.log('Post gastos status: ' + res.status));
         imprimir();
       };
 
       const deleteGasto = async (id) => {
         await fetch("http://localhost:3000/gasto?id=" + id, {
           method: "DELETE",
-        });
+        }).then(res=> console.log('Delete gastos status: ' + res.status));
         imprimir();
       };
 
@@ -239,8 +244,8 @@ Articulos de limpieza</textarea
             roommate: roommateSelected,
             descripcion,
             monto,
-          }),
-        });
+          })
+        }).then(res=> console.log('Put gastos status: ' + res.status));
         $("#exampleModal").modal("hide");
         imprimir();
       };

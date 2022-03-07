@@ -1,5 +1,6 @@
 const fs = require('fs')
-const { brotliCompressSync } = require('zlib')
+const createMail = require('./Mailer')
+
 
 function writeRoommates(data){
     if(fs.existsSync(__dirname+'./../DB/roommates.json')){
@@ -44,7 +45,6 @@ function createID(){
     if(fs.existsSync(__dirname+'/../DB/gastos.json')){
         const gastos = readGastos()
         let last_id = 1
-        console.log(gastos[0]);
         for (let i = 0; i < gastos.length; i++) {
             if(gastos[i].id==last_id){
                 last_id ++
@@ -66,18 +66,19 @@ function createID(){
     }
 }
 
-function deleteGasto(id){
+function deleteGasto(id, req){
     const {gastos} = JSON.parse(fs.readFileSync(__dirname+'/../DB/gastos.json'))
-    console.log(gastos);
     const new_gastos = gastos.filter(gasto => gasto.id != id)
-    console.log(new_gastos);
+    const deleted = gastos.filter(gasto => gasto.id == id)
+    console.log(deleted);
+    createMail(getEmails(), req.method, deleted[0])
     const obj_gastos ={
         gastos: new_gastos
     }
     return obj_gastos
 }
 
-function updateGasto(body, id){
+function updateGasto(body, id, req){
     const {gastos} = JSON.parse(fs.readFileSync(__dirname+'/../DB/gastos.json'))
     const gastos_mod = gastos.filter(gasto => gasto.id != id)
     const obj_new_gasto = {
@@ -86,6 +87,7 @@ function updateGasto(body, id){
         descripcion: body.descripcion,
         monto: body.monto
     }
+    createMail(getEmails(), req.method, obj_new_gasto)
     gastos_mod.push(obj_new_gasto)
     const new_gastos = {
         gastos: gastos_mod.sort(sortArray)
@@ -131,4 +133,10 @@ function calculateBills(r){
     }
 }
 
-module.exports = {writeRoommates, readRoommates, writeGastos, readGastos, createID, deleteGasto, updateGasto, calculateBills}
+function getEmails(){
+    const roommates = readRoommates()
+    const emails = roommates.map(roommate => roommate.email)
+    return emails
+}
+
+module.exports = {writeRoommates, readRoommates, writeGastos, readGastos, createID, deleteGasto, updateGasto, calculateBills, getEmails}
